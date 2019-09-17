@@ -21,7 +21,7 @@ These notes are here to practice my markdown, remind me of what to do and are mo
 
 ## Method 1:  https
 
-_https seems to work everywhere_ whether it be on your local desktop behind a firewall or on a cloud instance
+_https seems to work on Azure Databricks but not on Cloudera. For Cloudera have uesed SSH.
 
 #### Step 1. Configure your git details:  
 
@@ -36,13 +36,14 @@ File -> New Project -> Version Control -> Git -> paste the https link from the g
 Git https link from the repo e.g. "https://github.com/hamspaldo/project.git"
 
 enter github username  
+
 enter github password
 
 ## Method 2: SSH  
 
-- SSH isn't supported by the Azure Databricks instance of RStudio. Have read it may work with SAML single sign-on available through as an Enterprise Github Account - per https://github.com/pricing or google "github subscriptions"  
+- It looks like SSH isn't supported by the Azure Databricks instance of RStudio. Have read it may work with SAML single sign-on available through as an Enterprise Github Account - per https://github.com/pricing or google "github subscriptions"  
    
-- Does work on more permanent VPN type platforms like cloudera/Taysolsto create local SSH key on cluster, where the terminal in RStudio is working.  
+- SSH does work on  cloudera/Taysols, need to create local SSH key on cluster, where the terminal in RStudio is working. (Terminal in RStudio for Azure Databricks is blank, so SSH setup doesn't look to be possible.)  
 
 
 1. Spin up your RStudio instance.
@@ -85,7 +86,7 @@ https://docs.databricks.com/user-guide/clusters/ssh.html
 testing your SSH key connection
 https://help.github.com/en/articles/testing-your-ssh-connection
 
-## Other stuff
+## Other
 
 ### Make sure SSH Authentication Agent is running on local machine  
 At Git Bash:  
