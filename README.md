@@ -1,4 +1,4 @@
-Using Github and Spark with RStudio on Azure Databricks
+Using Github, R, Spark with RStudio on Azure Databricks
 ================
 
 Intro
