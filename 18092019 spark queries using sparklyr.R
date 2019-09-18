@@ -11,7 +11,8 @@ sc <- spark_connect(method = "databricks")
 iris_tbl <- copy_to(sc, iris)
 
 # get some data into a df
-SHEM_IM_SftyCod <- readxl::read_excel("R/SHEM_IM_SftyCod.xlsx") %>% as.data.frame()
+library(readxl)
+SHEM_IM_SftyCod <- read_excel("~/R/SHEM_IM_SftyCod.xlsx") %>% as.data.frame()
 class(SHEM_IM_SftyCod) # is a df, tibble won't import to spark
 
 SHEM_IM_SftyCod_tbl <- copy_to(sc, SHEM_IM_SftyCod)
