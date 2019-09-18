@@ -1,5 +1,5 @@
 ---
-title: "Using Github with RStudio on Azure Databricks"
+title: "Using Github, R, Spark with RStudio on Azure Databricks"
 output: github_document
 ---
 
@@ -17,7 +17,7 @@ When using git with Azure Databricks, the Terminal built into RStudio is unavail
 
 These notes are here to practice my markdown, remind me of what to do and are mostly gleaned from various internet sources. I have tried my best to attribute these sources with links pasted under the **Links** Section below.  
   
-## Programs
+## Using Git/GIthub to save Programs
 
 ## Method 1:  https
 
@@ -41,9 +41,9 @@ enter github password
 
 ## Method 2: SSH  
 
-- It looks like SSH isn't supported by the Azure Databricks instance of RStudio. Have read it may work with SAML single sign-on available through as an Enterprise Github Account - per https://github.com/pricing or google "github subscriptions"  
+- It looks like SSH isn't well supported by the Azure Databricks instance of RStudio. For a start, the Terminal window in RStudio doesn't work as there is no terminal session loaded. You can generate the SSH key in RStudio instance.
    
-- SSH does work on  cloudera/Taysols, need to create local SSH key on cluster, where the terminal in RStudio is working. (Terminal in RStudio for Azure Databricks is blank, so SSH setup doesn't look to be possible.)  
+- SSH does work on  cloudera/Taysols, where you can create an RSA key on cluster, as the terminal in RStudio is working. (The Terminal in RStudio for Azure Databricks is blank, so SSH setup doesn't look to be possible.)  
 
 
 1. Spin up your RStudio instance.
@@ -55,12 +55,14 @@ usethis::use_git_config(user.name = "hamspaldo", user.email = "hamish.spalding@h
 copy the public key
 
 3. in R check that you have an SSH key set up.
+```{r eval=FALSE, include=TRUE}
 file.exists("~/.ssh/id_rsa.pub")
-
+```
 4. go to git -> settings
 copy and past the SSH key - give it a name like databricksinstance so you know to delete it later
 
 5. In RStudio. File -> New Project -> Version Control -> Git -> paste into repository URL the following:
+
 Git SSH link from the Repo e.g. "git@github.com:hamspaldo/project.git"
 
 6. warning message pops up, say yes
@@ -79,12 +81,52 @@ Session -> restart R
 
 3. .....??  
 
+## Connect your instance of R to Spark cluster on Azure Databricks
+
+1. in Databricks notbook running on the cluster you need to run:  
+```{r eval=FALSE, include=TRUE}
+## source: https://docs.databricks.com/spark/latest/sparkr/sparklyr.html
+# Install latest version of Rcpp
+install.packages("Rcpp")
+
+# Install sparklyr. It can take a few minutes, because it installs +10 dependencies.
+install.packages("sparklyr")
+
+# Load sparklyr package.
+library(sparklyr)
+spark_connect(method = "databricks")
+```
+
+2. then in R you need to run
+
+Connect RStudio to Spark session:
+```{r eval=FALSE, include=TRUE}
+library(SparkR) # SparkR library is contained in Databricks Runtime, but you must load it into RStudio. 
+sparkR.session()
+
+library(sparklyr)
+sc <- spark_connect(method = "databricks") # to initialize a sparklyr session.
+# spark_disconnect(sc) # don't forget to close session afterwards
+```
+
+## Import some data into the Spark cluster on Azure Databricks
+
+See 18092019 spark queries using sparklyr.R file
+
+- so far have success uploading to RStudio and then sparklyr::copy_to the cluster.  
+- preference is to ingest directly from blog storage rather than via the single R node..
+
 ## Links
 
 https://docs.databricks.com/user-guide/clusters/ssh.html  
 
-testing your SSH key connection
+testing your SSH key connection  
 https://help.github.com/en/articles/testing-your-ssh-connection
+
+Spark  
+https://docs.databricks.com/spark/latest/sparkr/sparklyr.html#connect-sparklyr-to-databricks-clusters
+https://databricks.com/blog/2017/05/25/using-sparklyr-databricks.html
+https://docs.databricks.com/spark/latest/sparkr/rstudio.html#get-started-with-rstudio-server-open-source
 
 ## Other
 
