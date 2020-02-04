@@ -41,9 +41,7 @@ enter github password
 Method 2: SSH
 -------------
 
--   It looks like SSH isn't well supported by the Azure Databricks instance of RStudio. For a start, the Terminal window in RStudio doesn't work as there is no terminal session loaded. You can generate the SSH key in RStudio instance.
-
--   SSH does work on cloudera/Taysols, where you can create an RSA key on cluster, as the terminal in RStudio is working. (The Terminal in RStudio for Azure Databricks is blank, so SSH setup doesn't look to be possible.)
+-  If the Terminal is not working, in Azure Databricks RStudio instance, then go to Tools -> Options -> Terminal and try tick/unticking the Connect with WebSockets box. You will then be able to see the terminal prompt $.
 
 1.  Spin up your RStudio instance. Configure your git environment in that instance:
 
@@ -57,15 +55,15 @@ usethis::use\_git\_config(user.name = "hamspaldo", user.email = "<hamish.spaldin
 file.exists("~/.ssh/id_rsa.pub")
 ```
 
-1.  go to git -&gt; settings copy and past the SSH key - give it a name like databricksinstance so you know to delete it later
+3.  go to git -&gt; settings copy and past the SSH key - give it a name like databricksinstance so you know to delete it later
 
-2.  In RStudio. File -&gt; New Project -&gt; Version Control -&gt; Git -&gt; paste into repository URL the following:
+4.  In RStudio. File -&gt; New Project -&gt; Version Control -&gt; Git -&gt; paste into repository URL the following:
 
 Git SSH link from the Repo e.g. "<git@github.com>:hamspaldo/project.git"
 
-1.  warning message pops up, say yes
+5.  warning message pops up, say yes
 
-2.  enter your passphrase
+6.  enter your passphrase
 
 Method 3 using Personal Access Tokens
 -------------------------------------
