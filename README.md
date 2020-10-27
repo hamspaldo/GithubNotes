@@ -124,6 +124,9 @@ testing your SSH key connection
 Spark
 <https://docs.databricks.com/spark/latest/sparkr/sparklyr.html#connect-sparklyr-to-databricks-clusters> <https://databricks.com/blog/2017/05/25/using-sparklyr-databricks.html> <https://docs.databricks.com/spark/latest/sparkr/rstudio.html#get-started-with-rstudio-server-open-source>
 
+Happy Git and GitHub for the useR - by Jenny Bryant and Jim Hester
+https://happygitwithr.com/
+
 Other
 -----
 
