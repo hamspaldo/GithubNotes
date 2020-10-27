@@ -43,9 +43,9 @@ Method 2: SSH
 
 -  If the Terminal is not working, in Azure Databricks RStudio instance, then go to Tools -> Options -> Terminal and try tick/unticking the Connect with WebSockets box. You will then be able to see the terminal prompt $.
 
-1.  Spin up your RStudio instance. Configure your git environment in that instance:
+-   Spin up your RStudio instance. Configure your git environment in that instance:
 
-usethis::use\_git\_config(user.name = "hamspaldo", user.email = "<hamish.spalding@hotmail.com>")
+usethis::use\_git\_config(user.name = "hamspaldo", user.email = "<yourgithubemail@email.com>")
 
 1.  create SSH key using Tools -&gt; GLobal Options -&gt; Git/SVN -&gt; create RSA Key -&gt; put in a passphrase for your SSH key -&gt; view public key copy the public key
 
@@ -113,7 +113,7 @@ Import some data into the Spark cluster on Azure Databricks
 See 18092019 spark queries using sparklyr.R file
 
 -   so far have success uploading to RStudio and then sparklyr::copy\_to the cluster.
--   preference is to ingest directly from blog storage rather than via the single R node..
+-   preference is to ingest directly from blob storage rather than via the single R node..
 
 Links
 -----
