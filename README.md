@@ -8,7 +8,7 @@ The purpose of this repo is to record how to replicate **Programs** and **Data**
 - For **Programs**: will use Github. (haven't used Bitbucket yet, git/github appear to be more popular, but the documentation on Bitbucket website on using git at the command line is quite excellent.)
 - For **Data**: will use Azure blob storage. Github has a limit on size of 100mb or so so if you want to use the same data each time in your RStudio instance for a project, it is best to link to some form of cloud storage like Azure blob or AWS S3.
 
-When using git with Azure Databricks, the Terminal built into RStudio is unavailable and I don't know how to get to gitbash cli....- therefore Method 1 is easiest vs using Databricks CLI, which is more about uploading data to the cluster than making SSH connection to a node on the Databricks cluster.
+When using git with Azure Databricks, the Terminal built into RStudio is unavailable and I don't know how to get to gitbash cli....- therefore Method 1 is easiest vs using Databricks CLI (which is more about uploading data to the cluster than making SSH connection to a node on the Databricks cluster).
 
 These notes are here to practice my markdown, remind me of what to do and are mostly gleaned from various internet sources. I have tried my best to attribute these sources with links pasted under the **Links** Section below.
 
