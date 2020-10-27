@@ -79,7 +79,7 @@ Method 3 using Personal Access Tokens
 Connect your instance of R to Spark cluster on Azure Databricks
 ---------------------------------------------------------------
 
-1.  in Databricks notbook running on the cluster you need to run:
+1.  in Databricks notebook on the cluster you need to run:
 
 ``` r
 ## source: https://docs.databricks.com/spark/latest/sparkr/sparklyr.html
@@ -94,9 +94,7 @@ library(sparklyr)
 spark_connect(method = "databricks")
 ```
 
-1.  then in R you need to run
-
-Connect RStudio to Spark session:
+2.  then in R you need to Connect RStudio to the Spark session:
 
 ``` r
 library(SparkR) # SparkR library is contained in Databricks Runtime, but you must load it into RStudio. 
